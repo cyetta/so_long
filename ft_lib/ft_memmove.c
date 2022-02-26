@@ -6,12 +6,18 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/09 13:25:27 by cyetta            #+#    #+#             */
-/*   Updated: 2021/10/16 22:33:27 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/02/26 14:01:35 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
-
+/*
+The memmove() function copies n bytes from memory area src to memory area dest.
+The memory areas may overlap: copying takes place as though the bytes in src are
+first copied into a temporary array that does not overlap src or dest, and the
+bytes are then copied from the temporary array to dest.
+The memmove() function returns a pointer to dest.
+*/
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;

@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 00:14:13 by cyetta            #+#    #+#             */
-/*   Updated: 2022/02/22 22:48:31 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/02/26 15:14:03 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,11 @@ static char	*addbuff2str(char *str, size_t *str_len, t_fdesc *fd)
 	return (newstr);
 }
 
+/*
+returns a pointer to the next line from fd
+allocates a char("\n") string in memory and returns a pointer to it
+if NULL - allocation error or error reading or stream is empty
+*/
 char	*get_next_line(int fd)
 {
 	static t_fdesc	*fdesclst = NULL;
