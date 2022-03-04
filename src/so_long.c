@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:28:12 by cyetta            #+#    #+#             */
-/*   Updated: 2022/02/26 20:22:29 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/04 23:49:05 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,9 @@ int	map_check_pos(int i, int j, t_gmap *gmap)
 		gmap->pl_col = j;
 		gmap->pl_row = i;
 	}
-	else if (gmap->map[i][j] != '0')
+	else if (gmap->map[i][j] == 'P' && gmap->pl_col && gmap->pl_row)
+		gmap->map[i][j] = '0';
+	else if (gmap->map[i][j] != '0' && gmap->map[i][j] != '1')
 		return (0);
 	return (1);
 }
@@ -183,6 +185,8 @@ int	main(int argc, char **argv)
 	i = -1;
 	while (++i < gmap.row)
 		ft_printf("%s\n", gmap.map[i]);
+	ft_printf("coins%5d\nexit%5d\ncol%5d\nrow%5d\npl_col%5d\npl_row%5d\n", \
+gmap.coins, gmap.exits, gmap.col, gmap.row, gmap.pl_col, gmap.pl_row);
 	clean_map(&gmap);
 	return (0);
 }
