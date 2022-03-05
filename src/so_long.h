@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:01:26 by cyetta            #+#    #+#             */
-/*   Updated: 2022/02/26 19:41:55 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/05 15:28:24 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,9 @@ typedef struct s_gmap
 	int		movements;
 	char	**map;
 }	t_gmap;
+
+void	init_map(t_gmap *gmap);
+void	clean_map(t_gmap *gmap);
+int		getfd_mapfile(char *mpath);
+int		load_map(t_gmap *gmap, char *mpath);
 #endif

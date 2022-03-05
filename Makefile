@@ -5,7 +5,7 @@ CC = gcc
 RM = rm -f
 CFLAGS = -Wall -Wextra -Werror
 
-SRC_N 	= so_long.c
+SRC_N 	= so_long.c mapload.c
 SRC_B 	=
 
 DIR_SRC	= ./src/
