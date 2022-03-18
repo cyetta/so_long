@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:28:12 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/17 20:41:28 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/18 19:47:50 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,51 @@
 #include "../mlx/mlx.h"
 #include "so_long.h"
 
-int	start_game(t_gwin *gwin)
+int	create_win(t_gwin *gwin)
 {
-	gwin->x_wind = gwin->gmap.col * 16;
-	gwin->y_wind = gwin->gmap.row * 16;
+	gwin->x_wind = gwin->gmap.col * TILE_SZ;
+	gwin->y_wind = gwin->gmap.row * TILE_SZ;
 	gwin->mlx = mlx_init();
-	if (gwin->mlx)
+	if (!gwin->mlx)
 	{
-		gwin->mlx_win = mlx_new_window(gwin->mlx, gwin->x_wind, gwin->y_wind, \
-"so_long");
-		mlx_loop(gwin->mlx);
-	}
-	else
 		ft_putstr_fd("Error\nmlx not initialized", 2);
+		clean_map(&(gwin->gmap));
+		return (0);
+	}
+	if (!loadtile(gwin))
+		return (0);
+	gwin->mlx_win = mlx_new_window(gwin->mlx, gwin->x_wind, gwin->y_wind, \
+"so_long");
+	mlx_loop(gwin->mlx);
+	return (1);
+}
 
-	clean_map(&gwin->gmap);
-	return (0);
+void	print_gmap(t_gwin	*gwin)
+{
+	int	i;
+
+	i = -1;
+	while (++i < gwin->gmap.row)
+		ft_printf("%s\n", gwin->gmap.map[i]);
+	ft_printf("coins%5d\nexit%5d\ncol%5d\nrow%5d\npl_col%5d\npl_row%5d\n", \
+gwin->gmap.coins, gwin->gmap.exits, gwin->gmap.col, gwin->gmap.row, \
+gwin->gmap.pl_col, gwin->gmap.pl_row);
 }
 
 int	main(int argc, char **argv)
 {
 	t_gwin	gwin;
-	int		i;
 
 	if (argc != 2)
 	{
 		ft_putstr_fd("Error\nUsage: ./so_long <maps.ber>\n", 2);
 		return (1);
 	}
-	// ft_putendl_fd(argv[1], 1);
+	init_gwin(&gwin);
 	if (!load_map(&gwin.gmap, argv[1]))
 		return (2);
-	i = -1;
-// 	while (++i < gwin.gmap.row)
-// 		ft_printf("%s\n", gwin.gmap.map[i]);
-// 	ft_printf("coins%5d\nexit%5d\ncol%5d\nrow%5d\npl_col%5d\npl_row%5d\n", \
-// gwin.gmap.coins, gwin.gmap.exits, gwin.gmap.col, gwin.gmap.row, \
-// gwin.gmap.pl_col, gwin.gmap.pl_row);
-	start_game(&gwin);
+	print_gmap(&gwin);
+	if (!create_win(&gwin))
+		return (2);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 14:50:43 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/05 16:02:37 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/18 17:26:07 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int	load_map(t_gmap *gmap, char *mpath)
 	int		fd;
 	char	*s;
 
-	init_map(gmap);
 	fd = getfd_mapfile(mpath);
 	if (fd < 0)
 		return (0);

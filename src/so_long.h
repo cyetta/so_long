@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:01:26 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/17 19:28:40 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/18 20:00:59 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# define TILE_SZ 128
+# define TILE_GROUND 0
+# define TILE_WALL 4
+# define TILE_EXIT 8
+# define TILE_COIN 16
+# define TILE_PLAYER 20
 
 typedef struct s_gmap
 {
@@ -31,13 +37,16 @@ typedef struct s_gwin
 {
 	void	*mlx;
 	void	*mlx_win;
+	void	*tile[42];
 	int		x_wind;
 	int		y_wind;
 	t_gmap	gmap;
 }	t_gwin;
 
 void	init_map(t_gmap *gmap);
+void	init_gwin(t_gwin *gwin);
 void	clean_map(t_gmap *gmap);
 int		getfd_mapfile(char *mpath);
 int		load_map(t_gmap *gmap, char *mpath);
+int		loadtile(t_gwin *gwin);
 #endif

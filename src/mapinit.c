@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:53:30 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/17 18:57:41 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/18 17:21:41 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 #include <sys/stat.h>
 #include "../ft_lib/libft.h"
 #include "so_long.h"
+
+void	init_gwin(t_gwin *gwin)
+{
+	ft_memset(gwin, 0, sizeof(t_gwin));
+}
 
 void	init_map(t_gmap *gmap)
 {
