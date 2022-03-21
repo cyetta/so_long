@@ -6,13 +6,36 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:28:12 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/18 19:47:50 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/22 00:08:05 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "../ft_lib/libft.h"
 #include "../mlx/mlx.h"
 #include "so_long.h"
+
+int	closewin(t_gwin *gwin)
+{
+	clean_gwin(gwin);
+	mlx_destroy_window(gwin->mlx, gwin->mlx_win);
+	exit (1);
+}
+
+int	keydown(int keycode, t_gwin *gwin)
+{
+	(void)gwin;
+	ft_printf("key pressed:%d\n", keycode);
+	if (keycode == KEY_ESC)
+		return (closewin(gwin));
+	return (0);
+}
+
+void	init_hook(t_gwin *gwin)
+{
+	mlx_hook(gwin->mlx_win, 2, 1L << 0, keydown, gwin);
+	mlx_hook(gwin->mlx_win, 17, 1L << 0, closewin, gwin);
+}
 
 int	create_win(t_gwin *gwin)
 {
@@ -25,10 +48,11 @@ int	create_win(t_gwin *gwin)
 		clean_map(&(gwin->gmap));
 		return (0);
 	}
-	if (!loadtile(gwin))
-		return (0);
 	gwin->mlx_win = mlx_new_window(gwin->mlx, gwin->x_wind, gwin->y_wind, \
 "so_long");
+	if (!loadtile(gwin))
+		return (0);
+	init_hook(gwin);
 	mlx_loop(gwin->mlx);
 	return (1);
 }
