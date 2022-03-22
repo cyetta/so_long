@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:47:02 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/22 00:07:33 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/22 19:03:30 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,12 @@ int	loadtile(t_gwin *gwin)
 		return (ld_tilerr(gwin, "Error\nTile exit load error\n", 0));
 	if (!ld_tile(gwin, TILE_EXIT_OPENED, "data/exit_opened.xpm"))
 		return (ld_tilerr(gwin, "Error\nTile exit load error\n", 0));
-	if (!ld_tile(gwin, TILE_COIN, "data/coin.xpm"))
+	if (!ld_tile(gwin, TILE_COIN, "data/coin_0.xpm"))
 		return (ld_tilerr(gwin, "Error\nTile coin load error\n", 0));
-	if (!ld_tile(gwin, TILE_PLAYER, "data/player.xpm"))
+	if (!ld_tile(gwin, TILE_PLAYER + PL_DIRDOWN, "data/player_down_0.xpm") \
+	|| !ld_tile(gwin, TILE_PLAYER + PL_DIRLEFT, "data/player_left_0.xpm") \
+	|| !ld_tile(gwin, TILE_PLAYER + PL_DIRUP, "data/player_up_0.xpm") \
+	|| !ld_tile(gwin, TILE_PLAYER + PL_DIRRIGHT, "data/player_right_0.xpm"))
 		return (ld_tilerr(gwin, "Error\nTile player load error\n", 0));
 	return (1);
 }

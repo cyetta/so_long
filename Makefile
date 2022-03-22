@@ -1,7 +1,7 @@
 NAME	= so_long
 BNS_N	=
 
-SRC_N 	= so_long.c mapinit.c mapload.c loadtile.c
+SRC_N 	= so_long.c mapinit.c mapload.c loadtile.c hook.c drawtilepers.c drawtilemap.c playermove.c
 SRC_B 	=
 
 DIR_SRC	= ./src/
