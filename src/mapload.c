@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 14:50:43 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/18 17:26:07 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 20:42:56 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	map_check_borders(t_gmap *gmap)
 	}
 	if (gmap->coins < 1 || gmap->exits < 1 || (!gmap->pl_col && !gmap->pl_row))
 		return (0);
+	gmap->exits = -1;
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 18:53:30 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/18 17:21:41 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 18:09:54 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,6 @@
 #include <sys/stat.h>
 #include "../ft_lib/libft.h"
 #include "so_long.h"
-
-void	init_gwin(t_gwin *gwin)
-{
-	ft_memset(gwin, 0, sizeof(t_gwin));
-}
 
 void	init_map(t_gmap *gmap)
 {
@@ -43,6 +38,30 @@ void	clean_map(t_gmap *gmap)
 	init_map(gmap);
 }
 
+int	open_ber(char *mpath, int flag)
+{
+	char	*ext;
+	int		fd;
+
+	ext = ft_strrchr(mpath, '.');
+	if (!ext || (ext && ft_strncmp(ext, ".ber", 5) != 0))
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd(mpath, 2);
+		ft_putstr_fd(" is not .ber file.\nUsage: ./so_long [maps].ber\n", 2);
+		return (-1);
+	}
+	fd = open(mpath, flag);
+	if (fd < 0)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd(mpath, 2);
+		perror(" file cannot be opened");
+		return (-1);
+	}
+	return (fd);
+}
+
 int	getfd_mapfile(char *mpath)
 {
 	int	fd;
@@ -52,19 +71,9 @@ int	getfd_mapfile(char *mpath)
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd(mpath, 2);
-		ft_putstr_fd("  directory cannot be opened\n", 2);
+		ft_putstr_fd(" - directory cannot be opened\n", 2);
+		close(fd);
 		return (-1);
 	}
-	else
-	{
-		fd = open(mpath, O_RDONLY);
-		if (fd < 0)
-		{
-			ft_putstr_fd("Error\n", 2);
-			ft_putstr_fd(mpath, 2);
-			perror(" file cannot be opened");
-			return (-1);
-		}
-	}
-	return (fd);
+	return (open_ber(mpath, O_RDONLY));
 }

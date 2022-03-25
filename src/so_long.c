@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:28:12 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/22 11:27:23 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 21:35:12 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 #include "../ft_lib/libft.h"
 #include "../mlx/mlx.h"
 #include "so_long.h"
+
+void	init_gwin(t_gwin *gwin)
+{
+	ft_memset(gwin, 0, sizeof(t_gwin));
+}
 
 void	init_hook(t_gwin *gwin)
 {
@@ -60,14 +65,14 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error\nUsage: ./so_long <maps.ber>\n", 2);
+		ft_putstr_fd("Error\nUsage: ./so_long [maps].ber\n", 2);
 		return (1);
 	}
 	init_gwin(&gwin);
 	if (!load_map(&gwin.gmap, argv[1]))
 		return (2);
-	print_gmap(&gwin);
 	if (!create_win(&gwin))
 		return (2);
 	return (0);
 }
+	// print_gmap(&gwin);

@@ -2,7 +2,7 @@ NAME	= so_long
 BNS_N	=
 
 SRC_N 	= so_long.c mapinit.c mapload.c loadtile.c hook.c drawtilepers.c drawtilemap.c playermove.c
-SRC_B 	=
+SRC_B 	= so_long.c mapinit.c mapload.c loadtile_bonus.c hook.c drawtilepers.c drawtilemap_bonus.c playermove.c
 
 DIR_SRC	= ./src/
 DIR_BON	= ./bonus/
@@ -39,7 +39,7 @@ libmlx:
 ${NAME}: ${DIR_FTL}libft.a ${DIR_MLX}libmlx.a ${OBJ_P}
 	${CC} ${CFLAGS} -o $@ ${OBJ_P} -L ${DIR_FTL} -lft ${MLXFLG}
 
-${BNS_N}: ${DIR_FTL}libft.a ${OBJ_B}
+${BNS_N}: ${DIR_FTL}libft.a ${DIR_MLX}libmlx.a ${OBJ_B}
 	${CC} ${CFLAGS} -o $@ ${OBJ_B}  -L${DIR_FTL} -lft ${MLXFLG}
 
 debug:
@@ -47,7 +47,10 @@ debug:
 	${MAKE} CFLAGS="${CFLAGS} -g3" libft
 	${MAKE} CFLAGS="${CFLAGS} -g3" ${NAME}
 
-bonus: libft ${BNS_N}
+bonus:
+	${MAKE} libmlx
+	${MAKE} libft
+	${MAKE} SRC_N="${SRC_B}" ${NAME}
 
 clean:
 	${RM} ${OBJ_P} ${OBJ_B} ${DPDS}

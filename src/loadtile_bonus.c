@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loadtile.c                                         :+:      :+:    :+:   */
+/*   loadtile_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:47:02 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/25 20:45:24 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 21:51:05 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ int	loadtile(t_gwin *gwin)
 	if (!ld_tile(gwin, TILE_EXIT_OPENED, "data/dooropened.xpm"))
 		return (ld_tilerr(gwin, "Error\nTile exit load error\n", 0));
 	if (!ld_tile(gwin, TILE_COIN, "data/coin_0.xpm"))
+		return (ld_tilerr(gwin, "Error\nTile coin load error\n", 0));
+	if (!ld_tile(gwin, TILE_COIN + 1, "data/coin_1.xpm"))
 		return (ld_tilerr(gwin, "Error\nTile coin load error\n", 0));
 	if (!ld_tile(gwin, TILE_YOUWIN, "data/youwin.xpm"))
 		return (ld_tilerr(gwin, "Error\nTile youwin load error\n", 0));

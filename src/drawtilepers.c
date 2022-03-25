@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:31:17 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/22 18:00:45 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:31:44 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,17 @@ int	draw_tile(t_gwin *gwin, char tile, int x, int y)
 	return (0);
 }
 
-int	update_win(t_gwin *gwin)
+void	draw_youwin(t_gwin *gwin)
+{
+	if ((gwin->gmap.exits / 25) % 2 == 0)
+		mlx_put_image_to_window(gwin->mlx, gwin->mlx_win, \
+gwin->tile[TILE_YOUWIN], \
+gwin->x_wind / 2 - 192, gwin->y_wind / 2 - 64);
+	if (!--gwin->gmap.exits)
+		closewin_h(gwin);
+}
+
+int	update_window(t_gwin *gwin)
 {
 	int	i;
 	int	j;

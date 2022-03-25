@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drawtilemap.c                                      :+:      :+:    :+:   */
+/*   drawtilemap_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:31:17 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/25 18:58:25 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 22:34:02 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	draw_wall(t_gwin *gwin, int x, int y)
 void	draw_coin(t_gwin *gwin, int x, int y)
 {
 	draw_ground(gwin, x, y);
-	mlx_put_image_to_window(gwin->mlx, gwin->mlx_win, gwin->tile[TILE_COIN], \
+	mlx_put_image_to_window(gwin->mlx, gwin->mlx_win, \
+	gwin->tile[TILE_COIN + ((gwin->frame / 25) % 2)], \
 	x * TILE_SZ, y * TILE_SZ);
 }
 

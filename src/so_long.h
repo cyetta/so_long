@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:01:26 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/22 18:31:26 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/25 21:16:35 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define TILE_EXIT_OPENED 9
 # define TILE_COIN 16
 # define TILE_PLAYER 20
+# define TILE_YOUWIN 36
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
@@ -70,13 +71,14 @@ void	clean_gwin(t_gwin *gwin);
 int		closewin_h(t_gwin *gwin);
 int		keydown_h(int keycode, t_gwin *gwin);
 int		render_h(t_gwin *gwin);
-int		update_win(t_gwin *gwin);
+int		update_window(t_gwin *gwin);
 int		draw_tile(t_gwin *gwin, char tile, int x, int y);
 void	draw_ground(t_gwin *gwin, int x, int y);
 void	draw_wall(t_gwin *gwin, int x, int y);
 void	draw_coin(t_gwin *gwin, int x, int y);
 void	draw_player(t_gwin *gwin, int x, int y);
 void	draw_exit(t_gwin *gwin, int x, int y);
+void	draw_youwin(t_gwin *gwin);
 int		pl_move_up(t_gwin *gwin);
 int		pl_move_down(t_gwin *gwin);
 int		pl_move_left(t_gwin *gwin);
