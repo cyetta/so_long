@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:01:26 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/26 14:00:44 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/26 20:13:33 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 # define TILE_SZ 128
 # define TILE_GROUND 0
 # define TILE_WALL 4
@@ -28,9 +28,9 @@
 # define PL_MOVESTOP 0
 # define PL_MOVE 1
 # define PL_DIRDOWN 0
-# define PL_DIRLEFT 1
-# define PL_DIRUP 2
-# define PL_DIRRIGHT 3
+# define PL_DIRLEFT 3
+# define PL_DIRUP 6
+# define PL_DIRRIGHT 9
 
 typedef struct s_gmap
 {
@@ -42,8 +42,11 @@ typedef struct s_gmap
 	int		pl_col;
 	int		pl_row;
 	int		pl_move;
+	int		pl_mv2col;
+	int		pl_mv2row;
 	int		pl_direction;
 	int		movements;
+	char	*mov_str;
 	char	**map;
 }	t_gmap;
 
@@ -74,7 +77,7 @@ int		draw_tile(t_gwin *gwin, char tile, int x, int y);
 void	draw_ground(t_gwin *gwin, int x, int y);
 void	draw_wall(t_gwin *gwin, int x, int y);
 void	draw_coin(t_gwin *gwin, int x, int y);
-void	draw_player(t_gwin *gwin, int x, int y);
+void	draw_player(t_gwin *gwin);
 void	draw_exit(t_gwin *gwin, int x, int y);
 void	draw_youwin(t_gwin *gwin);
 int		pl_move_up(t_gwin *gwin);
@@ -82,4 +85,6 @@ int		pl_move_down(t_gwin *gwin);
 int		pl_move_left(t_gwin *gwin);
 int		pl_move_right(t_gwin *gwin);
 int		level_complete(t_gwin *gwin);
+void	count_movements(t_gwin *gwin);
+void	draw_movements(t_gwin *gwin);
 #endif

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   hook_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 11:13:15 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/26 13:54:50 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/26 20:14:09 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "../ft_lib/libft.h"
 #include "../mlx/mlx.h"
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	closewin_h(t_gwin *gwin)
 {
@@ -60,6 +60,7 @@ int	render_h(t_gwin *gwin)
 		gwin->render = 0;
 		if (gwin->gmap.exits >= 0)
 			draw_youwin(gwin);
+		draw_movements(gwin);
 	}
 	gwin->frame = ++gwin->frame % 1000 ;
 	return (0);

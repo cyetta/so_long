@@ -2,10 +2,11 @@ NAME	= so_long
 BNS_N	=
 
 SRC_N 	= so_long.c mapinit.c mapload.c loadtile.c hook.c drawtilepers.c drawtilemap.c playermove.c
-SRC_B 	= so_long.c mapinit.c mapload.c loadtile_bonus.c hook.c drawtilepers.c drawtilemap_bonus.c playermove.c
+SRC_B 	= so_long_bonus.c mapinit_bonus.c mapload_bonus.c loadtile_bonus.c hook_bonus.c \
+			drawtilepers_bonus.c drawtilemap_bonus.c playermove_bonus.c draw_movements_bonus.c
 
 DIR_SRC	= ./src/
-DIR_BON	= ./bonus/
+DIR_BON	= ./src/
 DIR_FTL	= ./ft_lib/
 DIR_MLX = ./mlx/
 INCPATH	= ${DIR_FTL} ${DIR_MLX} ${DIR_SRC} ${DIR_BON}
@@ -42,14 +43,11 @@ ${NAME}: ${DIR_FTL}libft.a ${DIR_MLX}libmlx.a ${OBJ_P}
 ${BNS_N}: ${DIR_FTL}libft.a ${DIR_MLX}libmlx.a ${OBJ_B}
 	${CC} ${CFLAGS} -o $@ ${OBJ_B}  -L${DIR_FTL} -lft ${MLXFLG}
 
-debug:
-	${MAKE} libmlx
+debug: libmlx
 	${MAKE} CFLAGS="${CFLAGS} -g3" libft
-	${MAKE} CFLAGS="${CFLAGS} -g3" ${NAME}
+	${MAKE} CFLAGS="${CFLAGS} -g3" SRC_N="${SRC_B}" ${NAME}
 
-bonus:
-	${MAKE} libmlx
-	${MAKE} libft
+bonus: libmlx libft
 	${MAKE} SRC_N="${SRC_B}" ${NAME}
 
 clean:

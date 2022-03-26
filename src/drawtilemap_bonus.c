@@ -6,13 +6,13 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 12:31:17 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/25 22:34:02 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/26 13:56:09 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_lib/libft.h"
 #include "../mlx/mlx.h"
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	draw_ground(t_gwin *gwin, int x, int y)
 {
@@ -30,7 +30,7 @@ void	draw_coin(t_gwin *gwin, int x, int y)
 {
 	draw_ground(gwin, x, y);
 	mlx_put_image_to_window(gwin->mlx, gwin->mlx_win, \
-	gwin->tile[TILE_COIN + ((gwin->frame / 25) % 2)], \
+	gwin->tile[TILE_COIN + ((gwin->frame / 200) % 2)], \
 	x * TILE_SZ, y * TILE_SZ);
 }
 
