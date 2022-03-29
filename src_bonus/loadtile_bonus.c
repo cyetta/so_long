@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:47:02 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/26 20:02:09 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/29 18:32:28 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,11 @@ static int	load_tile_p(t_gwin *gwin)
 	|| !ld_tile(gwin, TILE_PLAYER + PL_DIRRIGHT + 1, "data/player_right_1.xpm") \
 	|| !ld_tile(gwin, TILE_PLAYER + PL_DIRRIGHT + 2, "data/player_right_2.xpm"))
 		return (0);
+	if (!ld_tile(gwin, TILE_GHOST, "data/ghost_0.xpm") \
+	|| !ld_tile(gwin, TILE_GHOST + 1, "data/ghost_1.xpm") \
+	|| !ld_tile(gwin, TILE_GHOST + 2, "data/ghost_2.xpm") \
+	|| !ld_tile(gwin, TILE_GHOST + 3, "data/ghost_3.xpm"))
+		return (0);
 	return (1);
 }
 
@@ -80,21 +85,24 @@ static int	load_tile_p(t_gwin *gwin)
 int	loadtile(t_gwin *gwin)
 {
 	if (!ld_tile(gwin, TILE_GROUND, "data/ground_gray.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile ground load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading ground.xpm tile\n", 0));
 	if (!ld_tile(gwin, TILE_WALL, "data/wall1.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile wall load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading wall.xpm tile\n", 0));
 	if (!ld_tile(gwin, TILE_EXIT_CLOSED, "data/doorclosed.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile exit load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading doorclosed.xpm tile\n", 0));
 	if (!ld_tile(gwin, TILE_EXIT_OPENED, "data/dooropened.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile exit load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading dooropened.xpm tile\n", 0));
 	if (!ld_tile(gwin, TILE_COIN, "data/coin_0.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile coin load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading coin_0.xpm tile\n", 0));
 	if (!ld_tile(gwin, TILE_COIN + 1, "data/coin_1.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile coin load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading coin_1.xpm tile\n", 0));
 	if (!ld_tile(gwin, TILE_YOUWIN, "data/youwin.xpm"))
-		return (ld_tilerr(gwin, "Error\nTile youwin load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading youwin.xpm tile\n", 0));
+	if (!ld_tile(gwin, TILE_YOULOOSE, "data/youloose.xpm"))
+		return (ld_tilerr(gwin, "Error\nError loading youloose.xpm tile\n", 0));
 	if (!load_tile_p(gwin))
-		return (ld_tilerr(gwin, "Error\nTile player load error\n", 0));
+		return (ld_tilerr(gwin, "Error\nError loading player or ghost tiles\n", \
+0));
 	gwin->gmap.mov_str = ft_strdup("Number of movements: 0");
 	if (!gwin->gmap.mov_str)
 		return (ld_tilerr(gwin, "Error\nMemory allocation error\n", 0));

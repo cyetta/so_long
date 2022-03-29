@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/25 15:01:26 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/26 20:13:33 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/29 22:59:57 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,15 @@
 # define TILE_COIN 16
 # define TILE_PLAYER 20
 # define TILE_YOUWIN 36
+# define TILE_YOULOOSE 37
+# define TILE_GHOST 38
 # define KEY_ESC 53
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_S 1
 # define KEY_D 2
+# define GH_MOVELEFT 'G'
+# define GH_MOVERIGHT 'K'
 # define PL_MOVESTOP 0
 # define PL_MOVE 1
 # define PL_DIRDOWN 0
@@ -38,6 +42,7 @@ typedef struct s_gmap
 	int		row;
 	int		coins;
 	int		exits;
+	int		patrol;
 	int		collected;
 	int		pl_col;
 	int		pl_row;
@@ -77,14 +82,19 @@ int		draw_tile(t_gwin *gwin, char tile, int x, int y);
 void	draw_ground(t_gwin *gwin, int x, int y);
 void	draw_wall(t_gwin *gwin, int x, int y);
 void	draw_coin(t_gwin *gwin, int x, int y);
+void	draw_patrol(t_gwin *gwin, int x, int y);
+int		mv_patrol_right(t_gwin *gwin, int x, int y);
+int		mv_patrol_left(t_gwin *gwin, int x, int y);
 void	draw_player(t_gwin *gwin);
 void	draw_exit(t_gwin *gwin, int x, int y);
 void	draw_youwin(t_gwin *gwin);
+void	draw_youloose(t_gwin *gwin);
 int		pl_move_up(t_gwin *gwin);
 int		pl_move_down(t_gwin *gwin);
 int		pl_move_left(t_gwin *gwin);
 int		pl_move_right(t_gwin *gwin);
 int		level_complete(t_gwin *gwin);
+int		level_fail(t_gwin *gwin);
 void	count_movements(t_gwin *gwin);
 void	draw_movements(t_gwin *gwin);
 #endif
