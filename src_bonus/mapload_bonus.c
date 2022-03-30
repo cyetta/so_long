@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/05 14:50:43 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/29 19:24:43 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 17:48:58 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	map_check_pos(int i, int j, t_gmap *gmap)
 		gmap->coins++;
 	else if (gmap->map[i][j] == 'E')
 		gmap->exits++;
-	else if (gmap->map[i][j] >= 'G' && gmap->map[i][j] <= 'N')
+	else if (gmap->map[i][j] == 'G' || gmap->map[i][j] == 'K')
 		gmap->patrol++;
 	else if (gmap->map[i][j] == 'P' && !gmap->pl_col && !gmap->pl_row)
 	{
