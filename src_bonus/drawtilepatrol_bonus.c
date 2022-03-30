@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 19:34:58 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/29 23:23:44 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 15:28:06 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,48 +16,48 @@
 
 int	mv_patrol_left(t_gwin *gwin, int x, int y)
 {
-	int	ret;
+	int	dx;
 
-	ret = 1;
-	gwin->gmap.map[y][x] = '0';
-	if (gwin->gmap.map[y][x - 1] == 'P')
-	{
+	dx = -1;
+	if (gwin->gmap.map[y][x + dx] == 'P')
 		level_fail(gwin);
-		x--;
-	}
-	else if (gwin->gmap.map[y][x - 1] == '0')
-		x--;
-	else if (mv_patrol_right(gwin, x, y))
-		return (ret);
+	else if (gwin->gmap.map[y][x + dx] == '0')
+		;
 	else
-		ret = 0;
-	gwin->gmap.map[y][x] = GH_MOVELEFT;
+		dx = 0;
+	gwin->gmap.map[y][x] = '0';
+	if (!dx)
+		gwin->gmap.map[y][x + dx] = GH_MOVERIGHT;
+	else
+		gwin->gmap.map[y][x + dx] = GH_MOVELEFT;
 	mlx_put_image_to_window(gwin->mlx, gwin->mlx_win, \
-	gwin->tile[TILE_GHOST], x * TILE_SZ, y * TILE_SZ);
-	return (ret);
+	gwin->tile[TILE_GHOST], (x + dx) * TILE_SZ, y * TILE_SZ);
+	if (!dx)
+		return (0);
+	return (1);
 }
 
 int	mv_patrol_right(t_gwin *gwin, int x, int y)
 {
-	int	ret;
+	int	dx;
 
-	ret = 1;
-	gwin->gmap.map[y][x] = '0';
-	if (gwin->gmap.map[y][x + 1] == 'P')
-	{
+	dx = 1;
+	if (gwin->gmap.map[y][x + dx] == 'P')
 		level_fail(gwin);
-		x++;
-	}
-	else if (gwin->gmap.map[y][x + 1] == '0')
-		x++;
-	else if (mv_patrol_left(gwin, x, y))
-		return (ret);
+	else if (gwin->gmap.map[y][x + dx] == '0')
+		;
 	else
-		ret = 0;
-	gwin->gmap.map[y][x] = GH_MOVERIGHT;
+		dx = 0;
+	gwin->gmap.map[y][x] = '0';
+	if (!dx)
+		gwin->gmap.map[y][x + dx] = GH_MOVELEFT;
+	else
+		gwin->gmap.map[y][x + dx] = GH_MOVERIGHT;
 	mlx_put_image_to_window(gwin->mlx, gwin->mlx_win, \
-	gwin->tile[TILE_GHOST], x * TILE_SZ, y * TILE_SZ);
-	return (ret);
+	gwin->tile[TILE_GHOST], (x + dx) * TILE_SZ, y * TILE_SZ);
+	if (!dx)
+		return (0);
+	return (1);
 }
 
 void	draw_patrol(t_gwin *gwin, int x, int y)
