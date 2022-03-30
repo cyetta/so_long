@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 18:28:12 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/26 21:19:26 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 16:38:58 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,6 @@ int	create_win(t_gwin *gwin)
 	return (1);
 }
 
-/*void	print_gmap(t_gwin	*gwin)
-{
-	int	i;
-
-	i = -1;
-	while (++i < gwin->gmap.row)
-		ft_printf("%s\n", gwin->gmap.map[i]);
-	ft_printf("coins%5d\nexit%5d\ncol%5d\nrow%5d\npl_col%5d\npl_row%5d\n", \
-gwin->gmap.coins, gwin->gmap.exits, gwin->gmap.col, gwin->gmap.row, \
-gwin->gmap.pl_col, gwin->gmap.pl_row);
-}
-*/
 int	main(int argc, char **argv)
 {
 	t_gwin	gwin;
@@ -75,4 +63,3 @@ int	main(int argc, char **argv)
 		return (2);
 	return (0);
 }
-	// print_gmap(&gwin);

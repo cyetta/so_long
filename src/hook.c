@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 11:13:15 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/26 13:54:50 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 16:31:30 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,9 @@ int	closewin_h(t_gwin *gwin)
 {
 	clean_gwin(gwin);
 	mlx_destroy_window(gwin->mlx, gwin->mlx_win);
-	exit (1);
+	exit (0);
 }
 
-//	ft_printf("Congratulations, level complete!\n");
 int	level_complete(t_gwin *gwin)
 {
 	gwin->gmap.map[gwin->gmap.pl_row][gwin->gmap.pl_col] = '0';
@@ -30,7 +29,6 @@ int	level_complete(t_gwin *gwin)
 	return (0);
 }
 
-	// ft_printf("key pressed:%d\n", keycode);
 int	keydown_h(int keycode, t_gwin *gwin)
 {
 	if (keycode == KEY_ESC)
@@ -49,7 +47,6 @@ int	keydown_h(int keycode, t_gwin *gwin)
 	return (0);
 }
 
-//	ft_printf("frame:%d\n", gwin->frame);
 int	render_h(t_gwin *gwin)
 {
 	if (!(gwin->frame % 25))

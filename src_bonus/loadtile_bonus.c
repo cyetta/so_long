@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 17:47:02 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/29 18:32:28 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 16:53:33 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,14 @@ void	clean_gwin(t_gwin *gwin)
 }
 
 /*
-!mlx_destroy_window leaks
+!mlx_destroy_window leaks, used exit()
 */
 static int	ld_tilerr(t_gwin *gwin, char *err, int errnum)
 {
 	ft_putstr_fd(err, 2);
 	clean_gwin(gwin);
 	mlx_destroy_window(gwin->mlx, gwin->mlx_win);
-	return (errnum);
+	exit(errnum + 2);
 }
 
 int	ld_tile(t_gwin *gwin, int idx, char *path)

@@ -6,7 +6,7 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 11:13:15 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/29 20:26:52 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 16:30:44 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	closewin_h(t_gwin *gwin)
 {
 	clean_gwin(gwin);
 	mlx_destroy_window(gwin->mlx, gwin->mlx_win);
-	exit (1);
+	exit (0);
 }
 
 int	keydown_h(int keycode, t_gwin *gwin)

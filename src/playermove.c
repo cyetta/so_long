@@ -6,12 +6,11 @@
 /*   By: cyetta <cyetta@student.21-school.ru>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 13:45:38 by cyetta            #+#    #+#             */
-/*   Updated: 2022/03/22 19:07:34 by cyetta           ###   ########.fr       */
+/*   Updated: 2022/03/30 16:32:06 by cyetta           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_lib/libft.h"
-// #include "../mlx/mlx.h"
 #include "so_long.h"
 
 int	pl_move(t_gwin *gwin, int direction, int row, int col)
